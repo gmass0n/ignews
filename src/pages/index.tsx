@@ -1,11 +1,41 @@
-import { NextPage } from "next";
+import { GetServerSideProps, NextPage } from "next";
 import Head from "next/head";
+
+import { stripe } from "../services/stripe";
 
 import { SubscribeButton } from "../components/SubscribeButton";
 
 import styles from "../styles/home.module.scss";
+import { formatPrice } from "../utils/formatPrice";
 
-const Home: NextPage = () => {
+interface StripeProduct {
+  priceId: string;
+  amount: number;
+  formattedAmount: string;
+}
+interface HomeProps {
+  product: StripeProduct;
+}
+
+export const getServerSideProps: GetServerSideProps<HomeProps> = async () => {
+  const price = await stripe.prices.retrieve("price_1JSkQDA6anyFBtl8PlZ3t84q");
+
+  const priceAmount = price.unit_amount / 100;
+
+  const product: StripeProduct = {
+    priceId: price.id,
+    amount: priceAmount,
+    formattedAmount: `${formatPrice(priceAmount)}/${price.recurring.interval}`,
+  };
+
+  return {
+    props: {
+      product,
+    },
+  };
+};
+
+const Home: NextPage<HomeProps> = ({ product }) => {
   return (
     <>
       <Head>
@@ -25,10 +55,10 @@ const Home: NextPage = () => {
           <p>
             Get access to all the publications
             <br />
-            <span>for $9.99/month</span>
+            <span>for {product?.formattedAmount}</span>
           </p>
 
-          <SubscribeButton />
+          <SubscribeButton priceId={product?.priceId} />
         </section>
 
         <img src="/images/avatar.svg" alt="Girl coding" />
