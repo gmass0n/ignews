@@ -1,5 +1,6 @@
 .signInButton {
   height: 3rem;
+  width: 14rem;
   border-radius: 3rem;
   background: var(--gray-850);
   border: 0;
@@ -9,17 +10,20 @@
   align-items: center;
   justify-content: center;
 
+  overflow: hidden;
+  white-space: nowrap;
+
   color: var(--white);
   font-weight: bold;
 
-  transition: filter 0.2s;
+  transition: filter 0.2s, width 1s;
 
   svg {
-    width: 20px;
-    height: 20px;
+    min-width: 20px;
+    min-height: 20px;
 
-    &:first-child {
-      margin-right: 1rem;
+    & + span {
+      margin-left: 1rem;
     }
 
     &.closeIcon {
@@ -29,5 +33,18 @@
 
   &:hover {
     filter: brightness(0.85);
+  }
+
+  span {
+    transition: opacity 0.4s;
+  }
+
+  @media (max-width: 650px) {
+    width: 62px;
+    justify-content: flex-start;
+
+    span {
+      opacity: 0;
+    }
   }
 }

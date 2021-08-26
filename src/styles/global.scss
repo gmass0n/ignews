@@ -22,6 +22,14 @@ body {
   color: var(--white);
 }
 
+html,
+body,
+#_next {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
 body,
 input,
 textarea,

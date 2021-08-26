@@ -1,6 +1,12 @@
 .headerContainer {
   height: 5rem;
   border-bottom: 1px solid var(--gray-800);
+  position: fixed;
+  z-index: 999;
+  background: var(--gray-900);
+  top: 0;
+  left: 0;
+  right: 0;
 }
 
 .headerContent {
@@ -54,5 +60,11 @@
 
   > button {
     margin-left: auto;
+  }
+
+  @media (max-width: 500px) {
+    nav {
+      margin-left: 2.5rem;
+    }
   }
 }

@@ -1,15 +1,39 @@
 .contentContainer {
-  max-width: 1120px;
-  margin: 0 auto;
-  padding: 0 2rem;
   height: calc(100vh - 5rem);
+  margin-top: 5rem;
 
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  display: grid;
+  place-items: center;
+
+  > div {
+    max-height: calc(100vh - 5rem);
+    padding: 2rem;
+
+    overflow: auto;
+
+    > div {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      max-width: 1120px;
+      max-height: 100%;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 800px) {
+      > div {
+        flex-direction: column-reverse;
+      }
+    }
+  }
 }
 
 .hero {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+
   max-width: 600px;
 
   > span {
@@ -41,5 +65,10 @@
 
   > button {
     margin-top: 2.5rem;
+  }
+
+  @media (max-width: 800px) {
+    align-items: center;
+    text-align: center;
   }
 }

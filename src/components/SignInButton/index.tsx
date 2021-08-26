@@ -11,13 +11,13 @@ export const SignInButton: FC = () => {
   return isUserLoggedId ? (
     <button type="button" className={styles.signInButton}>
       <FaGithub color="#04d361" />
-      Gabriel Masson
+      <span>Gabriel Masson</span>
       <FiX color="#737380" className={styles.closeIcon} />
     </button>
   ) : (
     <button type="button" className={styles.signInButton}>
       <FaGithub color="#eda417" />
-      Sign in with GitHub
+      <span>Sign in with GitHub</span>
     </button>
   );
 };
