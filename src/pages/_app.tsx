@@ -7,7 +7,8 @@ const MyApp = ({ Component, pageProps }: AppProps): JSX.Element => {
       <Head>
         <title>ig.news</title>
       </Head>
-      <Component {...pageProps} />;
+
+      <Component {...pageProps} />
     </>
   );
 };
