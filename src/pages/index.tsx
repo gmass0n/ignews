@@ -1,12 +1,17 @@
 import { NextPage } from "next";
-
-import styles from "../styles/index.module.scss";
+import Head from "next/head";
 
 const Home: NextPage = () => {
   return (
-    <h1 className={styles.title}>
-      Home <span>azul</span>
-    </h1>
+    <>
+      <Head>
+        <title>Ínicio | ig.news</title>
+      </Head>
+
+      <h1>
+        Home <span>azul</span>
+      </h1>
+    </>
   );
 };
 
